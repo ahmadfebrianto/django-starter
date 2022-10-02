@@ -4,9 +4,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /django
-
-COPY requirements.txt requirements.txt
-
+COPY . .
 RUN pip install -r requirements.txt
 
-COPY . .
+RUN adduser --disabled-password --no-create-home django
+USER django
